@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/grid" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    >
+    <LinearLayout android:id="@+id/linear"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/FictionName"
+        android:textSize="20dp"
+        android:textColor="#8B1A1A"
+        android:text="dddddddd"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/NewChapter"
+        android:textSize="10dp"
+        android:textColor="#7FFF00"
+        android:text="ddddddd"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/FictionWeb"
+        android:visibility="gone"
+        />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/del"
+        android:text="Delete"
+        android:focusable="false"/>
+</LinearLayout>
