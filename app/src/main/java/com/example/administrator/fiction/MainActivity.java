@@ -1,5 +1,7 @@
 package com.example.administrator.fiction;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,12 +11,15 @@ import android.database.sqlite.SQLiteDatabase;
 
 import android.net.Uri;
 
+import android.net.wifi.WifiConfiguration;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +29,9 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
@@ -123,6 +130,25 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         toolbar.setOnMenuItemClickListener(onMenuItemClick);
+
+        Switch switch1 = (Switch)findViewById(R.id.switch1);
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Intent intent = new Intent(MainActivity.this, SearchService.class);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this,0,intent,0);
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                    Log.i("Test", "alarm: start");
+                    alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), Protocols.MY_INTERVAL_TIME,pendingIntent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, SearchService.class);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this,0,intent,0);
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                    alarmManager.cancel(pendingIntent);
+                }
+            }
+        });
 
         //Adapter relative``````````````````````````````````````````````
 

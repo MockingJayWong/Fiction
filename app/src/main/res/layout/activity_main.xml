@@ -10,8 +10,10 @@
         android:layout_height="80dp"  android:id="@+id/tb">
 
     </android.support.v7.widget.Toolbar>
-
-    <LinearLayout android:layout_below="@id/tb"  android:paddingLeft="@dimen/activity_horizontal_margin"
+    <Switch android:layout_height="wrap_content" android:layout_width="100dp"
+        android:id="@+id/switch1" android:layout_below="@id/tb" android:textOn="Open"
+        android:textOff="Close"> </Switch>
+    <LinearLayout android:layout_below="@id/switch1"  android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
